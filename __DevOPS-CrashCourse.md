@@ -101,9 +101,9 @@ VMWare > NetOps-PH Settings > NetAdapter (2, 3, & 4) > Advance > MAC Address
 
 | NetAdapter   | MAC Address      | VM Interface | ENS     |
 | ---          | ---              | ---          | ---     |
-| NetAdapter 2 | ___.___.___.___  | ens___       |  ens192 |
-| NetAdapter 3 | ___.___.___.___  | ens___       |  ens224 |
-| NetAdapter 4 | ___.___.___.___  | ens___       |  ens256 |
+| NetAdapter 2 | 00:0C:29:51:DD:F4  | ens___       |  ens192 |
+| NetAdapter 3 | 00:0C:29:51:DD:FE  | ens___       |  ens224 |
+| NetAdapter 4 | 00:0C:29:51:DD:08  | ens___       |  ens256 |
 
 <br>
 
@@ -537,7 +537,7 @@ Send cisco show commands
 !@UTM-PH - python shell
 import cli
 
-cli.executep('show ip int brief)
+cli.executep('show ip int brief')
 ~~~
 
 <br>
@@ -1356,7 +1356,9 @@ __Playbook (add_loop.yml)__
 ~~~
 ---
 - name: addloop
-  hosts: realdevices
+  hosts:
+   - utm
+   - baba
   gather_facts: no
   become: yes
   tasks:
